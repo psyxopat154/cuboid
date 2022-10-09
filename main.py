@@ -1,4 +1,6 @@
 import os
+import time
+
 from telegram.ext import Updater, MessageHandler, Filters
 import logging
 import sys
@@ -47,6 +49,7 @@ def check_cube(update, context):
 def main():
     updater = Updater(token=TOKEN, use_context=True)
     updater.dispatcher.add_handler(MessageHandler(Filters.dice, check_cube))
+    time.sleep(1.5)
     updater.start_webhook(
          listen="0.0.0.0",
          port=PORT,
