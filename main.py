@@ -3,8 +3,8 @@ from telegram.ext import Updater, MessageHandler, Filters
 import logging
 import sys
 
-TOKEN = os.getenv('TOKEN')
-APP_URL = os.getenv('APP_URL')
+TOKEN = '5687710657:AAE1F5rCmWWllLF_ALq-ccJg9qqohhseQqQ'
+APP_URL = 'https://cubeoid.herokuapp.com/'
 PORT = int(os.environ.get('PORT', '8443'))
 
 # STATUES = {
