@@ -43,16 +43,12 @@ def check_cube(update, context):
 
 
 def main():
-    updater = Updater(token=TOKEN)
-
+    updater = Updater(token=TOKEN, use_context=True)
     updater.dispatcher.add_handler(MessageHandler(Filters.dice, check_cube))
-
-    updater.start_webhook(
-        listen="0.0.0.0",
-        port=PORT,
-        url_path=TOKEN,
-        webhook_url=APP_URL + TOKEN,
-    )
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=TOKEN)
+    updater.bot.setWebhook('https://cuboid.herokuapp.com/' + TOKEN)
     updater.idle()
 
 
