@@ -32,7 +32,7 @@ def check_cube(update, context):
         chat_id=chat.id,
         text=message,
     )
-    logging.info(message)
+    logging.info(f'{chat} - {name} - {ext}')
 
 
 def main():
