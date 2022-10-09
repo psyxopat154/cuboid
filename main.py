@@ -1,9 +1,12 @@
 import os
+import random
 import time
 
 from telegram.ext import Updater, MessageHandler, Filters
 import logging
 import sys
+
+from values import VALUES
 
 SLEEP = 3
 TOKEN = os.getenv('TOKEN')
@@ -19,14 +22,6 @@ APP_NAME = os.getenv('APP_NAME')
 #     6: 'Настоящий патриот'
 # }
 
-STATUES = {
-    1: 'Дырявый',
-    2: 'Сосал на вписке',
-    3: 'Билюбознательный',
-    4: 'Дрочит на гейпорно',
-    5: 'Засомневался',
-    6: 'Альфа'
-}
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -37,10 +32,11 @@ logging.basicConfig(
 
 def check_cube(update, context):
     time.sleep(SLEEP)
-    value = update.message.dice.value
+    value = 10*update.message.dice.value
+    ext = value + random.randrange(1, 9)
     chat = update.effective_chat
     name = update.message.from_user.first_name
-    message = f'{name} - {STATUES[value]}'
+    message = f'{name} - {VALUES[ext]}'
     context.bot.send_message(
         chat_id=chat.id,
         text=message,
