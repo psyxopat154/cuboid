@@ -5,6 +5,7 @@ from telegram.ext import Updater, MessageHandler, Filters
 import logging
 import sys
 
+SLEEP = 1.5
 TOKEN = os.getenv('TOKEN')
 PORT = int(os.environ.get('PORT', '8443'))
 APP_NAME = os.getenv('APP_NAME')
@@ -35,6 +36,7 @@ logging.basicConfig(
 
 
 def check_cube(update, context):
+    time.sleep(SLEEP)
     value = update.message.dice.value
     chat = update.effective_chat
     name = update.message.from_user.first_name
@@ -49,7 +51,6 @@ def check_cube(update, context):
 def main():
     updater = Updater(token=TOKEN, use_context=True)
     updater.dispatcher.add_handler(MessageHandler(Filters.dice, check_cube))
-    time.sleep(1.5)
     updater.start_webhook(
          listen="0.0.0.0",
          port=PORT,
