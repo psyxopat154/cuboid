@@ -5,7 +5,7 @@ from telegram.ext import Updater, MessageHandler, Filters
 import logging
 import sys
 
-SLEEP = 1.5
+SLEEP = 2.5
 TOKEN = os.getenv('TOKEN')
 PORT = int(os.environ.get('PORT', '8443'))
 APP_NAME = os.getenv('APP_NAME')
