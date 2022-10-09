@@ -13,15 +13,6 @@ TOKEN = os.getenv('TOKEN')
 PORT = int(os.environ.get('PORT', '8443'))
 APP_NAME = os.getenv('APP_NAME')
 
-# STATUES = {
-#     1: 'Бендера',
-#     2: 'Либеральная собака',
-#     3: 'Провокатор',
-#     4: 'Коментатор из тырнета',
-#     5: 'Росиянин',
-#     6: 'Настоящий патриот'
-# }
-
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
