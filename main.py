@@ -4,6 +4,7 @@ import logging
 import sys
 
 TOKEN = os.getenv('TOKEN')
+APP_URL = os.getenv('APP_URL')
 PORT = int(os.environ.get('PORT', '8443'))
 
 # STATUES = {
@@ -50,7 +51,7 @@ def main():
         listen="0.0.0.0",
         port=PORT,
         url_path=TOKEN,
-        webhook_url="https://<appname>.herokuapp.com/" + TOKEN,
+        webhook_url=APP_URL + TOKEN,
     )
     updater.idle()
 
