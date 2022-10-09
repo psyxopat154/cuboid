@@ -5,7 +5,6 @@ import sys
 
 TOKEN = '5687710657:AAE1F5rCmWWllLF_ALq-ccJg9qqohhseQqQ'
 APP_URL = 'https://cubeoid.herokuapp.com/'
-PORT = int(os.environ.get('PORT', '8443'))
 
 # STATUES = {
 #     1: 'Бендера',
@@ -46,7 +45,7 @@ def main():
     updater = Updater(token=TOKEN, use_context=True)
     updater.dispatcher.add_handler(MessageHandler(Filters.dice, check_cube))
     updater.start_webhook(listen="0.0.0.0",
-                          port=int(PORT),
+                          port=int(8443),
                           url_path=TOKEN)
     updater.bot.setWebhook('https://cubeoid.herokuapp.com/' + TOKEN)
     updater.idle()
