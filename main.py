@@ -5,7 +5,7 @@ import sys
 
 TOKEN = '5687710657:AAE1F5rCmWWllLF_ALq-ccJg9qqohhseQqQ'
 PORT = int(os.environ.get('PORT', '8443'))
-APP_URL = 'https://cubeoid.herokuapp.com/'
+APP_URL = 'cubeoid'
 
 # STATUES = {
 #     1: 'Бендера',
