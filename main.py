@@ -24,7 +24,7 @@ logging.basicConfig(
 def check_cube(update, context):
     time.sleep(SLEEP)
     value = 10*update.message.dice.value
-    ext = value + random.randrange(1, 10)
+    ext = value + random.randint(1, 9)
     chat = update.effective_chat
     name = update.message.from_user.first_name
     message = f'{name} - {VALUES[ext]}'
