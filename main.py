@@ -3,9 +3,9 @@ from telegram.ext import Updater, MessageHandler, Filters
 import logging
 import sys
 
-TOKEN = '5687710657:AAE1F5rCmWWllLF_ALq-ccJg9qqohhseQqQ'
+TOKEN = os.getenv('TOKEN')
 PORT = int(os.environ.get('PORT', '8443'))
-APP_URL = 'cubeoid'
+APP_NAME = os.getenv('APP_NAME')
 
 # STATUES = {
 #     1: 'Бендера',
@@ -35,25 +35,26 @@ logging.basicConfig(
 def check_cube(update, context):
     value = update.message.dice.value
     chat = update.effective_chat
-    name = update.message.chat.first_name
+    name = update.message.from_user.first_name
+    message = f'{name} - {STATUES[value]}'
     context.bot.send_message(
         chat_id=chat.id,
-        text=f'{name} - {STATUES[value]}',
+        text=message,
     )
+    logging.info(message)
 
 
 def main():
     updater = Updater(token=TOKEN, use_context=True)
     updater.dispatcher.add_handler(MessageHandler(Filters.dice, check_cube))
     updater.start_webhook(
-        listen="0.0.0.0",
-        port=PORT,
-        url_path=TOKEN,
-        webhook_url=f"https://{APP_URL}.herokuapp.com/{TOKEN}"
+         listen="0.0.0.0",
+         port=PORT,
+         url_path=TOKEN,
+         webhook_url=f"https://{APP_NAME}.herokuapp.com/{TOKEN}"
     )
     updater.idle()
 
 
 if __name__ == '__main__':
     main()
-
