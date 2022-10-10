@@ -26,7 +26,10 @@ def stats(chat):
     if chat.id not in statistic.CHATS:
         statistic.CHATS.append(chat.id)
         statistic.TOTAL_CHATS += 1
-    return None
+        logging.info(f'Добавлен новый чат. Всего {statistic.TOTAL_CHATS} чатов')
+    else:
+        logging.info(f'Всего чатов {statistic.TOTAL_CHATS} чатов')
+        return None
 
 
 def check_cube(update, context):
