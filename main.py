@@ -7,6 +7,7 @@ import logging
 import sys
 
 from values import VALUES
+import statistic
 
 SLEEP = 3
 TOKEN = os.getenv('TOKEN')
@@ -21,6 +22,13 @@ logging.basicConfig(
 )
 
 
+def stats(chat):
+    if chat.id not in statistic.CHATS:
+        statistic.CHATS.append(chat.id)
+        statistic.TOTAL_CHATS += 1
+    return None
+
+
 def check_cube(update, context):
     time.sleep(SLEEP)
     value = update.message.dice.value
@@ -32,6 +40,7 @@ def check_cube(update, context):
         chat_id=chat.id,
         text=message,
     )
+    stats(chat)
     logging.info(f'{chat.id} - {name} - {status}')
 
 
